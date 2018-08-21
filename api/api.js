@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const mongoose = require('mongoose');
-const Device = require('./models/device'); 
+const Device = require('./models/devices'); 
 
 //Connect to mongoDB
 mongoose.connect(process.env.MONGO_URL);
@@ -50,6 +50,11 @@ app.post('/api/devices', (req, res) => {
     : res.send('successfully added device and data');
     });
    });
+
+   app.post('/api/send-command', (req,res) => {
+
+     console.log(req.body);
+ })
    
 app.listen(port, () => {console.log(`listening on port ${port}`);});
 

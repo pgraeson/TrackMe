@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon -r dotenv/config api.js",
-    "doc": "apidoc -o public/generated-docs/ -e node_modules/"
-
+    "doc": "apidoc -o public/generated-docs/ -e node_modules/",
+    "deploy": "now remove dope -y && now -p && now alias"
   },
   "author": "Peter G",
   "license": "ISC",
@@ -18,6 +18,9 @@
     "mongoose": "^5.2.9"
   },
   "devDependencies": {
-    "nodemon": "^1.18.3"
+    "apidoc": "^0.17.6",
+    "heroku": "^7.9.3",
+    "nodemon": "^1.18.3",
+    "now": "^11.3.11"
   }
 }
