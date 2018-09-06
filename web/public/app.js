@@ -4,10 +4,11 @@ const response = $.get('http://localhost:3000/devices');
 
 const API_URL = 'http://localhost:5000/api';
 
-$.get('${API_URL}/devices')
+$.get(`${API_URL}/devices`)
 .then(response => {
-response.forEach(device => {
-$('#devices tbody').append(`<tr>
+ response.forEach(device => {
+$('#devices tbody').append(`
+<tr>
 <td>${device.user}</td>
 <td>${device.name}</td>
 </tr>`
@@ -15,19 +16,12 @@ $('#devices tbody').append(`<tr>
 });
 })
 .catch(error => {
-console.error(`Error: ${error}`);
+  console.error(`Error: ${error}`);
 });
 
-devices.forEach(function(device) {
-    $('#devices tbody').append(`
-    <tr>
-    <td>${device.user}</td>
-    <td>${device.name}</td>
-    </tr>`
-    );
-   });
 
-   $('#add-device').on('click', () => {
+
+   $(`#add-device`).on('click', () => {
     const name = $('#name').val();
     const user = $('#user').val();
     const sensorData = [];
@@ -36,7 +30,7 @@ devices.forEach(function(device) {
     user,
     sensorData
     };
-    $.post('${API_URL}/devices', body)
+    $.post(`${API_URL}/devices`, body)
     .then(response => {
     location.href = '/';
     })
